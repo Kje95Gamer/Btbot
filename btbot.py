@@ -53,9 +53,13 @@ async def on_message(message):
     #Chat Filter 
     contents = message.content.split(" ")
     for word in contents:
-        if word.upper() in chat_filter
-        await client.delete_message(message)
-        await client.send_message(message.channel, "<@%s> **Hey!** Dont Swear :anger:" % (userID))
+        if word.upper() in chat_filter:
+            try:
+                await client.delete_message(message)
+                userID = message.author.id
+                await client.send_message(message.channel, "<@%s> **Hey!** Dont Swear :anger:" % (userID))
+            except discord.errors.NotFound:
+                return
     
     
 client.run('NTAwMDYyMjQ4MzU0NzA5NTM1.DqFXBg.vXDNZfqCFj9m6w2but9mKyQJb-E')
