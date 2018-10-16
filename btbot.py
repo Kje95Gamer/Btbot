@@ -11,6 +11,12 @@ Client = discord.Client ()
 client = commands.Bot(command_prefix = '!')
 Clientdiscord = discord.Client()
 
+chat_filter = ["FUCK", "SHIT", "WTF", "WTH", "MOTHERFUCKER", "A7A", "NUB", "NOOB"]
+
+@client.event
+async def on_ready():
+    print("The Bot is Ready")
+
 
 @client.event
 async def on_member_join(member):
@@ -44,12 +50,12 @@ async def on_message(message):
         args = message.content.split(" ")
         await client.send_message(message.channel, "%s" % (" ".join(args[1:])))
         
-    if ('FUCK') in message.content.upper():
-       await client.delete_message(message)
-    if ('WTF') in message.content.upper():
-       await client.delete_message(message)
-    if ('WTH') in message.content.upper():
-       await client.delete_message(message)
-    if ('SHIT') in message.content.upper():
-       await client.delete_message(message) 
+    #Chat Filter 
+    contents = message.content.split(" ")
+    for word in contents:
+        if word.upper() in chat_filter
+        await client.delete_message(message)
+        await client.send_message(message.channel, "<@%s> **Hey!** Dont Swear :anger:" % (userID))
+    
+    
 client.run('NTAwMDYyMjQ4MzU0NzA5NTM1.DqFXBg.vXDNZfqCFj9m6w2but9mKyQJb-E')
