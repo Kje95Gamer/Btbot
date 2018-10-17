@@ -46,6 +46,12 @@ async def on_message(message):
         userID = message.author.id
         await client.send_message(message.channel, "<@%s> **Rule1** Never swear or be a nerd, **Rule2** Don't spam in any chat, **Rule3** Don't move the music bot from the music category!" % (userID))
 
+    if message.content.upper().startswith('BT/CMDS'):
+        await client.delete_message(message)
+        userID = message.author.id
+        await client.send_message(message.channel, "<@%s> **All of the next commands don't have to be in the exact shape**                       **These are the Brothers Town Bot commands**                                                                                                                                                                             bt/8ball                                                                                                                                                                                                                                                                                                                                                                                                                              ping" % (userID))
+
+        
     if message.content.upper().startswith("BT/SAY"):
         if "497816148671463456" in [role.id for role in message.author.roles]:
             await client.delete_message(message)
