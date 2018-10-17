@@ -23,9 +23,10 @@ async def on_member_join(member):
     print('Recognised that a member called ' + member.name + ' joined')
     await client.send_message(member, 'Welcome! To The Brothers Town')
     print('Sent message to ' + member.name)
+    
+@client.event
 async def on_ready():
-    await client.change_presence(game=Game(name='Moin Cwaft'))
-    print('Ready') 
+    await client.change_presence(game=Game (name="Moin Cwaft"))
 
 
 @client.event
