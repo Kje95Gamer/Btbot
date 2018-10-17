@@ -47,8 +47,11 @@ async def on_message(message):
         await client.send_message(message.channel, "<@%s> **Rule1** Never swear or be a nerd, **Rule2** Don't spam in any chat, **Rule3** Don't move the music bot from the music category!" % (userID))
 
     if message.content.upper().startswith("BT/SAY"):
-        args = message.content.split(" ")
-        await client.send_message(message.channel, "%s" % (" ".join(args[1:])))
+        if "497816085203124232" in [role.id for role in message.author.roles]:
+            args = message.content.split(" ")
+            await client.send_message(message.channel, "%s" % (" ".join(args[1:])))
+        else:
+            await client.send_message(message.channel, "You are not a staff!")
         
     #Chat Filter 
     contents = message.content.split(" ")
