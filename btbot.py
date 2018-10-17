@@ -48,10 +48,13 @@ async def on_message(message):
 
     if message.content.upper().startswith("BT/SAY"):
         if "497816148671463456" in [role.id for role in message.author.roles]:
+            await client.delete_message(message)
             args = message.content.split(" ")
             await client.send_message(message.channel, "%s" % (" ".join(args[1:])))
         else:
-            await client.send_message(message.channel, "You are not a staff!")
+            await client.delete_message(message)
+            userID = message.author.id
+            await client.send_message(message.channel, "<@%s> You are not a staff!" % (userID))
         
     #Chat Filter 
     contents = message.content.split(" ")
